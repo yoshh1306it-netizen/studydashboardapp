@@ -1,0 +1,216 @@
+:root {
+  --primary-grad: linear-gradient(135deg, #9C51FF 0%, #5558FF 100%);
+  --primary: #5D5FEF;
+  --bg: #F4F7FE;
+  --white: #FFFFFF;
+  --text-main: #2B3674;
+  --text-sub: #A3AED0;
+  --danger-grad: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  --shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  --radius: 20px;
+}
+
+* { box-sizing: border-box; font-family: 'Noto Sans JP', sans-serif; }
+body { margin: 0; background-color: var(--bg); color: var(--text-main); }
+
+/* Layouts */
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.logo-area { display: flex; align-items: center; gap: 10px; }
+
+/* ロゴ */
+.logo-icon { 
+    width: 51px; height: 51px; 
+    background: var(--primary-grad); 
+    border-radius: 12px; 
+    display: flex; align-items: center; justify-content: center; 
+    color: white; font-size: 22px; flex-shrink: 0;
+}
+
+/* ナビゲーションボタン */
+.nav-group { display: flex; gap: 10px; align-items: center; }
+.nav-btn { 
+    text-decoration: none; color: var(--text-main); background: var(--white); 
+    padding: 10px 20px; border-radius: 10px; box-shadow: var(--shadow); 
+    font-weight: bold; font-size: 14px; transition: 0.2s; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.nav-btn:hover { color: var(--primary); transform: translateY(-2px); }
+/* クラス表示用（右端） */
+.class-display {
+    background: white; color: var(--primary); 
+    border: 2px solid var(--primary); cursor: default;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+}
+
+/* Cards */
+.card { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+
+/* アイコンハイライト */
+.icon-box {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; margin-right: 10px; flex-shrink: 0;
+}
+.theme-green { background: #E6FCF5; color: #0CA678; }
+.theme-blue { background: #E7F5FF; color: #1C7ED6; }
+.theme-orange { background: #FFF4E6; color: #F76707; }
+.theme-red { background: #FFF5F5; color: #FA5252; }
+.theme-purple { background: #F3F0FF; color: #7950F2; }
+
+/* Clock Card */
+.clock-card { 
+    background: var(--primary-grad); 
+    color: white; 
+    grid-column: 1 / 2; grid-row: 1 / 2; 
+}
+.clock-header { display: flex; align-items: center; gap: 8px; opacity: 0.8; font-size: 14px; margin-bottom: 10px; }
+.time-display { font-size: 48px; font-weight: bold; letter-spacing: 2px; line-height: 1; margin-bottom: 5px; }
+.date-display { opacity: 0.9; font-weight: 500; }
+
+/* Next Class */
+.next-class-card { grid-column: 2 / 3; grid-row: 1 / 2; display: flex; flex-direction: column; justify-content: center; }
+.subject-large { font-size: 32px; font-weight: bold; margin: 10px 0; }
+.badge { display:flex; align-items:center; font-size: 14px; font-weight: bold; color:var(--text-sub); }
+
+/* Schedule */
+.schedule-card { grid-column: 1 / 2; grid-row: 2 / 4; height: fit-content;}
+.schedule-list { list-style: none; padding: 0; margin-top: 20px; }
+.schedule-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+.period-num { background: #F4F7FE; color: var(--text-sub); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; margin-right: 15px; flex-shrink: 0;}
+.subject-name { font-weight: 600; flex-grow: 1; }
+.schedule-time { font-size: 12px; color: var(--text-sub); white-space: nowrap; }
+
+/* Current Class Highlight */
+.current-class { 
+    background: var(--primary); 
+    color: white; 
+    border-radius: 12px; 
+    padding: 12px; 
+    margin: 5px 0;
+    box-shadow: 0 4px 10px rgba(93, 95, 239, 0.3);
+    border: none;
+}
+.current-class .period-num { background: rgba(255,255,255,0.2); color: white; }
+.current-class .schedule-time { color: rgba(255,255,255,0.8); }
+.current-badge {
+    background: white; color: var(--primary); padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: bold; margin-left: 10px;
+}
+
+/* Test Countdown */
+.test-card { grid-column: 2 / 3; grid-row: 2 / 3; background: var(--danger-grad); color: white; display: flex; align-items: center; justify-content: space-between; }
+.test-info h3 { margin: 0 0 5px 0; font-size: 14px; opacity: 0.9; }
+.countdown-timer { font-size: 24px; font-weight: bold; }
+
+/* Tools Area */
+.tools-area { grid-column: 2 / 3; grid-row: 3 / 4; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+/* Headers */
+.card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.card-title { font-weight: bold; font-size: 14px; display: flex; align-items: center; color: var(--text-main); }
+.icon-btn { background: none; border: none; color: var(--text-sub); cursor: pointer; transition: 0.2s; font-size: 14px; }
+.icon-btn:hover { color: var(--primary); }
+
+/* Pomodoro */
+.timer-display { font-size: 36px; color: #FA5252; font-weight: bold; text-align: center; margin: 15px 0; }
+.pomo-btn { width: 100%; background: #FA5252; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+.pomo-btn:hover { opacity: 0.9; }
+
+/* ToDo */
+.todo-progress-container { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-bottom: 15px; overflow: hidden; }
+.todo-progress-bar { height: 100%; background: #F76707; width: 0%; transition: width 0.3s; }
+.todo-input-group { display: flex; gap: 5px; margin-bottom: 10px; }
+.todo-input { flex: 1; border: 1px solid #eee; padding: 8px; border-radius: 6px; background: #F9FAFC; }
+.add-btn { background: var(--primary); color: white; border: none; width: 32px; border-radius: 6px; cursor: pointer; }
+.todo-list { list-style: none; padding: 0; max-height: 150px; overflow-y: auto; }
+.todo-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13px; }
+.todo-item.done span { text-decoration: line-through; color: var(--text-sub); }
+
+/* Calendar Wrapper */
+#calendarArea {
+    /* デフォルトの高さ */
+    height: 350px; 
+    border-radius: 10px; 
+    background: #f9f9f9; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden;
+}
+
+/* Modal */
+.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center; }
+.modal.active { display: flex; }
+.modal-content { background: white; padding: 25px; border-radius: 15px; width: 300px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+/* Admin Specific */
+.admin-login-wrapper { height: 100vh; display: flex; align-items: center; justify-content: center; background: #111C44; }
+.login-box { background: white; padding: 40px; border-radius: 20px; width: 350px; text-align: center; }
+.form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 10px;}
+.btn-primary { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; transition:0.2s; }
+.btn-primary:hover { opacity:0.9; }
+.btn-secondary { display:inline-block; margin-top:10px; color: var(--text-sub); text-decoration:none; font-size:14px; cursor:pointer;}
+.tab-nav { display: flex; gap: 20px; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; overflow-x:auto;}
+.tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: var(--text-sub); white-space:nowrap;}
+.tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+
+/* -----------------------------------
+   Mobile Responsive Optimizations 
+   -----------------------------------
+*/
+@media (max-width: 850px) {
+    /* グリッドを1列に */
+    .dashboard-grid { 
+        grid-template-columns: 1fr; 
+        display: flex; 
+        flex-direction: column; 
+    }
+    
+    /* ツールエリア（ポモドーロ、ToDo、カレンダー）も1列に */
+    .tools-area { 
+        grid-template-columns: 1fr; 
+    }
+
+    /* ヘッダーのレイアウト変更 */
+    .header {
+        flex-direction: column; /* 縦並び */
+        align-items: stretch;   /* 横幅いっぱいに広げる */
+        gap: 15px;
+    }
+    
+    .logo-area {
+        justify-content: center; /* 中央寄せ */
+    }
+
+    .nav-group {
+        display: grid; /* グリッド表示 */
+        grid-template-columns: 1fr 1fr 1fr; /* 3等分 */
+        gap: 8px;
+        width: 100%;
+    }
+
+    .nav-btn {
+        justify-content: center;
+        flex-direction: column; /* アイコンとテキストを縦並び */
+        padding: 8px 4px;
+        font-size: 11px; /* 文字サイズ縮小 */
+        gap: 4px;
+        text-align: center;
+    }
+    
+    /* カレンダーの高さをスマホで見やすいサイズに固定 */
+    #calendarArea {
+        height: 350px;
+    }
+}
