@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+<header class="header">
+    <div class="logo-area">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+            <h2 style="margin:0; font-size:1.4em;">Study Dashboard</h2>
+            <small id="greeting-message" style="color:var(--text-sub); display:block; margin-top:-3px;">今日も頑張りましょう！</small>
+        </div>
+    </div>
+    <div class="nav-group">
+        <div class="nav-btn class-display" id="userClassDisplay">
+            <i class="fas fa-users"></i> <span>読込中...</span>
+        </div>
+        <a href="settings.html" class="nav-btn"><i class="fas fa-cog"></i> 設定</a>
+        <a href="admin.html" class="nav-btn"><i class="fas fa-user-shield"></i> 管理者画面</a>
+    </div>
+</header>
+
+        <div class="dashboard-grid">
+            <div class="card clock-card">
+                <div class="clock-header"><i class="far fa-clock"></i> 現在時刻</div>
+                <div class="time-display" id="clockTime">--:--:--</div>
+                <div class="date-display" id="clockDate">----/--/--</div>
+            </div>
+
+            <div class="card next-class-card">
+                <div class="badge">
+                    <div class="icon-box theme-green"><i class="fas fa-book-open"></i></div>
+                    次の授業
+                </div>
+                <div class="subject-large" id="nextClassSubject">読み込み中...</div>
+                <div style="color:var(--text-sub); font-size:14px;" id="nextClassTime">--:--</div>
+            </div>
+
+            <div class="card schedule-card">
+                <div class="card-header-flex">
+                    <div class="card-title">
+                        <div class="icon-box theme-blue"><i class="far fa-calendar-alt"></i></div>
+                        今日の時間割
+                    </div>
+                    <span id="scheduleDay" style="color:var(--text-sub)">-曜日</span>
+                </div>
+                <ul class="schedule-list" id="scheduleList"></ul>
+            </div>
+
+            <div class="card test-card">
+                <div class="test-info">
+                    <div style="display:flex; align-items:center; margin-bottom:5px;">
+                        <div class="icon-box" style="background:rgba(255,255,255,0.2); color:white;"><i class="fas fa-bullseye"></i></div>
+                        <span style="font-weight:bold;">次のテストまで</span>
+                    </div>
+                    <h2 style="margin:5px 0;" id="testName">予定なし</h2>
+                </div>
+                <div class="countdown-timer" id="testTimer"></div>
+            </div>
+
+            <div class="tools-area">
+                <div class="card">
+                    <div class="card-header-flex">
+                        <div class="card-title">
+                            <div class="icon-box theme-red"><i class="fas fa-stopwatch"></i></div>
+                            ポモドーロ
+                        </div>
+                        <button class="icon-btn" onclick="openPomoModal()"><i class="fas fa-cog"></i></button>
+                    </div>
+                    <div class="timer-display" id="pomoTimer">25:00</div>
+                    <button class="pomo-btn" id="pomoBtn"><i class="fas fa-play"></i> 開始</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header-flex">
+                        <div class="card-title">
+                            <div class="icon-box theme-orange"><i class="fas fa-list"></i></div>
+                            ToDoリスト
+                        </div>
+                        <span id="todoCount" style="font-size:12px; color:var(--text-sub);">0/0</span>
+                    </div>
+                    <div class="todo-progress-container">
+                        <div class="todo-progress-bar" id="todoProgressBar"></div>
+                    </div>
+                    <div class="todo-input-group">
+                        <input type="text" class="todo-input" id="newTodo" placeholder="タスク追加...">
+                        <button class="add-btn" id="addTodoBtn">+</button>
+                    </div>
+                    <ul class="todo-list" id="todoList"></ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header-flex">
+                        <div class="card-title">
+                            <div class="icon-box theme-purple"><i class="far fa-calendar"></i></div>
+                            個人スケジュール
+                        </div>
+                    </div>
+                    <div id="calendarArea">
+                        <p style="font-size:12px; color:#aaa;">設定からGoogleカレンダーを連携してください</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pomoModal" class="modal">
+        <div class="modal-content">
+            <h3>タイマー設定</h3>
+            <p style="font-size:14px; color:#666;">集中する時間を設定してください（分）</p>
+            <input type="number" id="pomoDurationInput" class="form-control" value="25" min="1" max="60">
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn-primary" onclick="savePomoSetting()">保存</button>
+                <button class="btn-primary" onclick="closePomoModal()" style="background:#ccc;">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initClock();
+            loadGlobalData().then(() => {
+                renderHome();
+            });
+            initPomodoro();
+            initTodo();
+            renderCalendar();
+        });
+    </script>
+</body>
+</html>
