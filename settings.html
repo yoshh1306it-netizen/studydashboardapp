@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人設定</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="nav-btn"><i class="fas fa-arrow-left"></i> ダッシュボードに戻る</a>
+            <h2>個人設定</h2>
+        </header>
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <div class="form-group" style="margin-bottom:20px;">
+                <label>クラス選択</label>
+                <select id="classSelect" class="form-control">
+                    <option value="21HR">21HR</option><option value="22HR">22HR</option>
+                    <option value="23HR">23HR</option><option value="24HR">24HR</option>
+                    <option value="25HR">25HR</option><option value="26HR">26HR</option>
+                    <option value="27HR">27HR</option><option value="28HR">28HR</option>
+                </select>
+            </div>
+            
+            <div class="form-group" style="margin-bottom:20px;">
+                <label>Googleカレンダー埋め込みURL (src)</label>
+                <input type="text" id="calUrl" class="form-control" placeholder="https://calendar.google.com/calendar/embed?src=...">
+                <small style="color:#666; display:block; margin-top:5px;">
+                    Googleカレンダーの「設定」>「カレンダーの統合」>「埋め込みコード」内の <code>src="..."</code> のURL部分のみを貼り付けてください。<br>
+                    ※カレンダーの公開設定が「一般公開」になっている必要があります。
+                </small>
+            </div>
+
+            <button class="btn-primary" onclick="save()">設定を保存</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('classSelect').value = localStorage.getItem('userClass') || '21HR';
+            document.getElementById('calUrl').value = localStorage.getItem('calEmbedUrl') || '';
+        });
+        function save() {
+            localStorage.setItem('userClass', document.getElementById('classSelect').value);
+            localStorage.setItem('calEmbedUrl', document.getElementById('calUrl').value);
+            alert('保存しました');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
