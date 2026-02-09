@@ -1,15 +1,15 @@
 {
   "timeSettings": [
-    {"period": 1, "start": "08:50", "end": "09:40"},
-    {"period": 2, "start": "09:50", "end": "10:40"},
-    {"period": 3, "start": "10:50", "end": "11:40"},
-    {"period": 4, "start": "11:50", "end": "12:40"},
-    {"period": 5, "start": "13:30", "end": "14:20"},
-    {"period": 6, "start": "14:30", "end": "15:20"},
-    {"period": 7, "start": "15:30", "end": "16:20"}
+    {"period": 1, "start": "08:35", "end": "09:25"},
+    {"period": 2, "start": "09:35", "end": "10:25"},
+    {"period": 3, "start": "10:35", "end": "11:25"},
+    {"period": 4, "start": "11:35", "end": "12:25"},
+    {"period": 5, "start": "13:10", "end": "14:00"},
+    {"period": 6, "start": "14:10", "end": "15:00"},
+    {"period": 7, "start": "15:10", "end": "16:00"}
   ],
   "tests": [
-    {"name": "学年末考査", "date": "2026-03-02"}
+    {"name":"学年末テスト", "date": "2026-02-24"}
   ],
   "schedules": {
     "21HR": {
