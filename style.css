@@ -5,7 +5,7 @@
   --white: #FFFFFF;
   --text-main: #2B3674;
   --text-sub: #A3AED0;
-  --danger-grad: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  --danger-grad: linear-gradient(135deg, #FF5F6D 0%, #FFC371 100%);
   --shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   --radius: 20px;
 }
